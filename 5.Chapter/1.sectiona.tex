@@ -1,0 +1,110 @@
+
+\section{Horizontal Droplet View}
+
+\par This experiment served as an initiation to the camera use. As stated before, the geometric implications of the droplet shape in radiation prevent the extraction of quantitative results.\\
+\par This experiment was made in two different speeds: 2 m/s and 0.8 m/s, and three temperatures: 60ºC, 100ºC and 110ºC. A sample of the results of this experiment can be seen in Figure \ref{fig:hexp}. In this figure, the x axis represents the distance between the bottom of the droplet to its top. These results show that within the same speed, the temperature gradient evolves similarly between different temperatures, along the time. It is also noticeable the high temperature in the interface and the considerably lower temperature at the top.
+
+\begin{figure}[h]
+\includegraphics[width=1\linewidth]{Figures/5.Chapter/hexp.png}
+\caption{Horizontal Results for 2 m/s during the spreading and receding phases}
+\label{fig:hexp}
+\end{figure}
+
+\section{Bottom View}
+
+\par The shown results will have a similar structure. Reading through this section, it is important to bear in mind that the results shown for a certain experiment can have both a bidimensional temperature map and a plot with temperatures along the radius for certain time-frames. The relation between the temperature maps, plots and the real image can be seen in Figure 
+
+\begin{figure}[h]
+\includegraphics[width=1\linewidth]{Figures/5.Chapter/example.png}
+\caption{Example of the results representation}
+\label{fig:hexp}
+\end{figure}
+
+\par In the Bottom View experimental setup, various conditions were tested. Two different impact velocity values, with different characteristics: 0.8 m/s and 2 m/s. Four initial foil temperature values, representing conditions before and after saturation: 60ºC, 80ºC, 100ºC and 110ºC. Two different wettability, hydrophilic and hydrophobic, surfaces were tested. Finally, tests were also made with two liquids: water and ethanol. For each of the conditions, 5 different experiments were made, so that the repeatability of the tests could be confirmed. In Figure \ref{fig:repeat} the repeatability of these tests can be seen with the example of the 60ºC results for 2 m/s.\\
+
+\begin{figure}
+\centering
+\input{Figures/5.Chapter/repeat}
+\caption{Repeatability of the experiments}
+\label{fig:repeat}
+\end{figure}
+
+\subsection{Before the Calibration}
+
+\par Before the calibration method was used, some preliminary results were taken for comparison. To evaluate the quality of the calibration it is important to compare the results and interpret the differences. The same results were taken from the experiments before the calibration, than after the calibration. For the speeds of 2 m/s and 0.8 m/s, the foil temperatures of 60ºC, 100ºC and 110ºC were analyzed. A sample taken of the results before and after the applied method can be seen in Figure \ref{fig:calibcomp2}. \\
+
+\par Before comparing the images, one should bare in mind the differences in their conditions. The results before calibration were taken at a different ambient temperature, and framerate. The average framerate of the results before the calibration is 990 fps, and 1100 after. One can only compare similar frames and differences may be accentuated by that. \\
+\par One important aspect is that the diameter is approximately the same, which means that the droplets we can see, during the spreading phase (all the points before 23 ms) the new calibration and method captures a bit of the air trapping effect mentioned previously in Section \ref{sec:heat}, while this effect is not present in the results without the calibration. Another thing that was corrected, was the fact that the temperature would drop bellow the ambient temperature before the calibration. This is impossible because the droplet is at ambient temperature. The cause of this happening has roots on optical effects, that were nullified by the calibration. On the other side the calibrated camera results have some noise that couldn't be addressed without losing resolution. The cause of the noise is probably the improved installation that allowed for higher spatial resolution. So while there is advantages in the factory calibration, the proposed calibration can better portrait the physical phenomena. \\
+
+\begin{figure}
+\centering
+\input{Figures/5.Chapter/calibcomp}
+\input{Figures/5.Chapter/calibcomp2}
+\caption{Comparison between results with and without the proposed calibration}
+\label{fig:calibcomp2}
+\end{figure}
+
+\section{Bottom View - Temperature results vs High Speed results}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\linewidth]{Figures/5.Chapter/IRvsHR.png}
+\caption{Comparison between High Speed camera images and Infra Red images for 0.8m/s and 80ºC at 0, 2, 6, 12 and 22 ms after the first contact on a hydrophilic surface}
+\label{fig:irvshr}
+\end{figure}
+
+\par One important objective of this work is to use the high-speed camera to compare physical phenomena with thermal phenomena. The results were put together in Figure \ref{fig:irvshr}. In this figure it is possible to see some of the stages of a droplet impact. Analyzing the images, it's observable the physical phenomena that have an impact on heat transfer. During the spreading, the interior ring in the temperature maps, presented in the third and fourth images, reflect the presence of the wave formed during the spreading. When this wave reaches maximum diameter it reverses in the recoiling phase. The thickness of the water layer is smaller right before the wave. In this area there is less heat removal. So, as expected, one can see a ring of higher temperatures, and a slope in the plot. After the recoiling phase the droplet starts to stabilize, and due to it's hemispherical shape the heat flux is higher at the center, so the temperature is lower in the center.
+
+\subsection{Velocity Influence}
+
+\par For an hidrophilic surface, results were taken for different velocities: 0.8 m/s, 2 m/s. The obvious difference is in the spreading diameter, which is directly influenced by the impact velocity. This can be seen in Figure \label{fig:irvshr}. One of the differences is the fingering, that only happens for 2 m/s (at t= 6ms). The height of the lamela is also smaller for this velocity.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\linewidth]{Figures/5.Chapter/hsspeed.png}
+\caption{Velocity HS images comparison for a hydrophilic surface at 100ºC}
+\label{fig:irvshr}
+\end{figure}
+
+
+\par Using the high speed camera it was possible to extract the droplet diameter for each frame, with the help of a code developed previously by Tomás Valente. The comparison between the spreading factor of each velocity can be seen in Figure \ref{fig:diameter}. As expected the spreading factor grows more with a higher impact velocity.
+
+\begin{figure}[h]
+\centering
+\input{Figures/5.Chapter/diameter}
+\caption{Comparison between the spreading factor of each velocity}
+\label{fig:diameter}
+\end{figure}
+
+\par Lets now take a look at the influence of the velocity in the temperature field. In Figure \ref{fig:speed1}, the average of all experiments made for both velocity values at 100ºC is presented for comparison. The temperature at the center of the droplet is similar during the spreading (3ms and 13 ms). The temperature at the droplet center drops more intensely in the lower velocity. This is justified by the height difference, also noticeable in the last panel of Figure \ref{fig:irvshr}. Looking at the shape of the curves, one can observe their similarity. This may be a signal of the time in which the phenomena occur is mostly independent of the impact velocity. Note that the curves have close temperatures in the center area and also that the lower velocity tests show always higher temperatures at the same point than the higher velocity ones outside the center. With this in mind, it's safe to assume that the higher velocity droplet removed more heat from the foil.
+
+\begin{figure}[h]
+\centering
+\input{Figures/5.Chapter/speed1}
+\input{Figures/5.Chapter/speed2}
+\input{Figures/5.Chapter/speed3}
+\caption{Average temperature along the radius between the 5 experiments of both velocity values at 100ºC}
+\label{fig:speed1}
+\end{figure}
+
+\subsection{Temperature Influence}
+
+\par This section will address the relative temperature drop in the foil for the tested temperatures. The temperatures had to be adimensionalized  so that they could be compared. \\
+
+\par This analysis, for a fixed impact velocity of 0.8 m/s, can be seen in Figure \ref{fig:temp}. In this figure one can see that for the different initial temperatures, the relative temperature drop is very similar in the center, but has a significant difference in the edge area. This may be the cause of different diameters at that time, which can shift the curve.
+
+\par This is a confirmation for the effectiveness of the  weighted background test. Because the curves vary so little for the different temperatures, one can assume that the relative temperature drop is constant and so, even if the background has different temperatures at its initial stage it is possible to assume a constant temperature if this technique is used.
+
+\begin{figure}[h]
+\centering
+\input{Figures/5.Chapter/temp2}
+\input{Figures/5.Chapter/temp1}
+\input{Figures/5.Chapter/temp3}
+\caption{Average adimensional temperature along the radius for 4 different initial temperatures}
+\label{fig:temp}
+\end{figure}
+
+
+
+
+

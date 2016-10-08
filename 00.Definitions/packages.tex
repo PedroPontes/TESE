@@ -42,7 +42,9 @@
 % PACKAGE date time:
 % -----------------
 % Lets you alter the format of the date that \today returns.
+
 \usepackage{datetime}
+
 \newdateformat{todaythesis}{%
 \monthname[\THEMONTH]  \THEYEAR}
 
@@ -71,7 +73,7 @@
 \usepackage{supertabular}
 \usepackage{pdflscape}
 % \usepackage{longtable}
-
+\usepackage{siunitx}
 % PACKAGE graphics, epsfig, subfigure, caption:
 % ---------------------------------------------
 % Packages for figures... well you will certainly need these packages, with the exception
@@ -104,8 +106,8 @@
 % The two packages are not compatible, and you should use one of the two. Notice however that the
 % IEEE BiBTeX stylesheet is imcompatible with the natbib package. If using the IEEE format, use the 
 % cite package instead
-\usepackage[square,numbers,sort&compress]{natbib}
-%\usepackage{cite}
+%\usepackage[square,numbers,sort&compress]{natbib}
+\usepackage{cite}
 
 % PACKAGE acronyum
 % -----------------
@@ -154,3 +156,7 @@
 \newcommand{\tableref}[1]{Table (\ref{#1})}
 
 \newcommand{\textreg}{$\textsuperscript{\textregistered}$}
+%%%%%%%%%%%%%%%%%%MY PACKS%%%%%%%%%%%%%%%%%%
+\usepackage{pgfplots} 
+\usepackage{listings}
+

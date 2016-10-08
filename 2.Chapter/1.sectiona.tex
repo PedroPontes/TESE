@@ -1,36 +1,239 @@
-\section{Section A}
+\section{Infrared Thermography}
 \label{sec:sectiona}
 
-\subsection{Subsection A}
-\label{subsec:subasectionA}
+Heat transfer through radiation is the way, in thermography, most often used to gather it's results and one of the main objects of study of this work is how to correctly transform the measured radiation intensity plus the information on the body emissivity and surrounding conditions in an accurate temperature estimate. To do so, some theoretical notions will have to be mentioned so that thermography can be better understood.
 
-This would be a citation \cite{dummy}.
+\subsection{Radiation Intensity to Temperature Conversion}
+\label{subsec:rad2tem}
 
-\ac{acro} 
-% The first time you use this, the acronym will be written in full with the acronym in parentheses: supernova (SN). At later times it will just print the acronym: SN.
+Radiation is emitted by all bodies at $T>0$. The intensity of this radiation largely depends on the direction, wavelength and of course temperatures. For example, above 500ºC, a body's radiation is almost entirely in the IR wavelength \cite{IRCAM}. Besides emitting radiation a body can also absorb ($\alpha$), reflect ($\rho$) and radiation can even pass through it ($\tau$). Adding all this elements we get the Total Radiation Law:
+\begin{equation}
+    W = W\alpha + W\rho + W\tau
+\end{equation}
+... in which $W$ represents the total energy transmitted through radiation. Using a simplified version we can also say that:
+\begin{equation}\label{eq:1}
+	1 = \alpha + \rho + \tau
+\end{equation}
+Note that in the equation \ref{eq:1}, $\alpha$, $\rho$ and $\tau$ represent their respective fractions of the incident radiation energy, and need to have values between 0 and 1.\\
 
-\acf{acro}
-% written out form with acronym in parentheses, irrespective of previous use
+\subsubsection{Blackbody Equations}
 
-\acs{acro}
-% acronym form, irrespective of previous use
+\par One of the most important concepts that is used in this work is the concept of \textit{blackbody}. A \textit{blackbody} is characterized for absorbing all energy transmitted through radiation. In the ideal case of a \textit{blackbody} the coefficients assume the following values: $\alpha=1, \ \rho=0, \ \tau=0$. The blackbody is also a perfect emitter. The emissivity ($\varepsilon$) of a body characterizes the efficiency of a body for emitting energy, so it's the ratio between energy emitted and the energy emitted if the body was a \textit{blackbody}. With this in mind we can use the equation \ref{eq:2} for a \textit{blackbody}. This equation is called Kirchhoff Law. Kirchhoff Law is also applied for the same wavelength ($\lambda$) so we can also use equation \ref{eq:3}.
 
-\acl{acro}
-% written out form without following acronym
+\begin{equation}\label{eq:2}
+\alpha=\varepsilon
+\end{equation}
+\begin{equation}\label{eq:3}
+\alpha(\lambda)=\varepsilon(\lambda)
+\end{equation}
+\par For the specific case of a \textit{blackbody} we can also apply equation \ref{eq:4}. This equation is called Stefan-Boltzmann law and it states the relation between energy emitted through radiation and the temperature of the body. If the body is not perfectly black, but it's absorption/reflection/transparency properties don't vary with the wavelength, we call it a \textit{greybody} and can use equation \ref{eq:5}.
+\begin{equation}\label{eq:4}
+W=\sigma T^4
+\end{equation}
+\begin{equation}\label{eq:5}
+W=\varepsilon \sigma T^4
+\end{equation}
+...where $\sigma=5.670373 \times 10^8 W m^{-2} K^{-4}$ and it's called the Stefan-Boltzmann constant.\\
+\par It's fairly obvious these are concepts that illustrate ideal situations, and even though in most experiments shown further ahead the materials are chosen to be as close to \textit{black} or \textit{greybodies}, those aren't perfect. Of course this is attenuated by the fact that thermography measures in small intervals of wavelength. The next subsection will relate how does one choose a wavelength interval, and it's relation with the atmosphere.
 
-\acp{acro}
-% plural form of acronym by adding an s. \acfp. \acsp, \aclp work as well.
+\subsubsection{Atmosphere Attenuation}
+\label{subsec:atmat}
 
-As seen in \cite{wiki}. \emph{Enfatizar}
+\par The thing that separates almost every thermographical camera from its target is the atmosphere, which has good and bad transmittance in different wavelengths. The atmosphere attenuation comes with the complexity of it's composition. For example, each of the following molecules: $H_2O$, $O_2$, $CO_2$ have certain wavelength values for which $\tau=0$. This means that in these wavelengths IR radiation will not pass through the atmosphere and its intensity cannot be measured.\\
+\par This issue calls for the necessity of choosing a wavelength \textit{window} for which the transmittance is close to 1. These \textit{windows} can be seen in Figure \ref{fig:atm}. It is possible to identify 2 main regions: the medium-wave \textit{window} (from 2-5 $m \mu$), or MW, and the long-wave \textit{window} (from 7.5-13.5 $m \mu$), or LW. The used camera works in the MW range so a selective range of wavelength inside it had to be chosen so to avoid bad atmosphere transmittance.
 
-\subsection{Subsection B}
-\label{subsec:subbsectiona}
-
-\begin{figure}[H]
-	\centering
-		\includegraphics[width=0.5\linewidth]{2.Chapter/dummy.pdf}
-	\caption[Dummy Figure Caption for List of Figures.]{Dummy Figure Caption.}
-	\label{fig:dummyfigure1}
+\begin{figure}
+\includegraphics[width=1\linewidth]{Figures/2.Chapter/atmospheric_window.png}
+\caption{Atmospheric Windows}
+\source{Adaptation from chapter 7's Figure 10 of \cite{desk1997electronic}}
+\label{fig:atm}
 \end{figure}
 
-Remember you can change the reference style. Another dummy citation \cite{site}.
+\subsubsection{Total Radiation}
+\par When measuring a body's temperature with the IR Camera, there are other radiation sources that have to be accounted for. In total we can divide these radiation sources in 3 categories, shown bellow wi:
+\begin{itemize}
+\item The radiation emitted by the object/objects of study
+\begin{equation}
+W_{obj}=\varepsilon_{obj} \ \sigma \ T_{obj}^4
+\end{equation}
+\item The radiation emitted by the atmosphere (where $ \ \varepsilon_{atm}=1-\tau_{atm}$ because $\rho_{atm}~=0$)
+\begin{equation}
+W_{atm}= (1-\tau_{atm}) \ \sigma \ T_{atm}^4
+\end{equation}
+\item The radiation from the surroundings reflected by the object/objects.
+\end{itemize}
+\begin{equation}
+W_{refl}=(1-\varepsilon_{obj}) \ \sigma \ T_{refl}^4
+\end{equation}
+...where $T_{refl}$ refers to the apparent temperature of the surrounding that's radiating to the body.\\
+\par Figure \ref{fig:camscheme} describes these sources and their origin. Note all the expressions in the figure represent energy radiated. In it it's possible to observe 2 sources of radiation come from the studied body represent the emitted and reflected components. When these components cross the atmosphere, they're affected by its transmissivity, $\tau_{atm}$ (this value in common atmospheric conditions is close to 1). The atmosphere itself can emit radiation, but because $\tau_{atm}$ is so close to 1, it mostly negligible.\\
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{Figures/2.Chapter/ir_camera_radiation_scheme.png}
+\caption{Total radiation sources scheme}
+\label{fig:camscheme}
+\end{figure}
+
+\par With these equations it is possible to relate the radiated energy received $W$ and the body temperature. This relation is demonstrated in equation \ref{eq:6} and \ref{eq:7}.
+\begin{equation}\label{eq:6}
+W_{tot}=W_{obj}+W_{refl}+W_{atm}=(\varepsilon_{obj} \ \sigma \ T_{obj}^4)+((1-\varepsilon_{obj}) \ \sigma \ T_{refl}^4)+((1-\tau_{atm}) \ \sigma \ T_{atm}^4)
+\end{equation}
+\begin{equation}\label{eq:7}
+T_{obj}=\sqrt[4]{\frac{W_{tot}-(1-\varepsilon_{obj}) \ \sigma \ T_{refl}^4-(1-\tau_{atm}) \ \sigma \ T_{atm}^4}{\sigma \ \varepsilon_{obj}}}
+\end{equation}
+\par The camera receives the total radiation $W_{tot}$, and the user has to input the emissivity and both the ambient and reflection temperatures in the camera software.
+
+\section{Wettability}
+
+\par Wettability is a qualitative surface property that describes how the surface is wetted by a liquid. This property is characterized by the interface tensions between the present solid, liquid and gaseous states. The balance between these tensions is represented in Figure \ref{fig:tensao}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\linewidth]{Figures/2.Chapter/tensao.PNG}
+\caption{Tension Balance}
+\label{fig:tensao}
+\end{figure}
+\par Wettability has several parameters that characterize it, being the most used one the contact angle of a sessile droplet onto a flat rigid face. In a thermodynamics perspective, the equilibrium condition of a liquid droplet are calculated by the minimization of the Gibbs energy of the system, G. When one considers constant temperature and pressure conditions it is possible to write the famous Young's equation \cite{young1805essay} from this minimization ($dG=0$), which is simply the tension balance in the horizontal axis:
+\begin{equation}
+\sigma_{sg}=\sigma_{sl}+\sigma_{lg}cos(\theta_e)
+\end{equation}
+where $\sigma$ represents the interface tension at the solid-liquid (sl), solid-gaseous (sg) and liquid-gaseous (lg) boundaries and $\theta_e$ represents the equilibrium contact angle. The contact angle is used often to characterize the wettability state of a system. High wettability is considered to have $0\si{\degree} <\theta_e<90\si{\degree} $ and low wettability $90\si{\degree}<\theta_e<180\si{\degree} $. The perfect wetted system has $\theta=0\si{\degree} $ and the perfect non-wetted system has $\theta=180\si{\degree} $ \cite{choi2011wettability}. The Hydrophilic, Hydrophobic and Super-Hydrophobic regimes are defined also by the contact angle and are represented in Figure \ref{fig:wet}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\linewidth]{Figures/2.Chapter/wet.png}
+\caption{Wetting Regimes}
+\label{fig:wet}
+\end{figure}
+
+\par Although it's been assumed that the surface is smooth, in reality one has to take in account the roughness of the surface. Considering an rough homogeneous interface, one can convert the smooth surface contact angle ($\theta_e$) to the actual contact angle ($\theta$) using a formula based on the force balance and empirical correlations, presented in Equation \ref{eq:wenzel}. 
+\begin{equation}\label{eq:wenzel}
+cos \theta = R_f cos \theta_e
+\end{equation}
+where $R_f= \frac{A_{SL}}{A_{F}}$ and is the relation between the surface area, to its flat projected area. This equation is called the Wenzel equation \cite{wenzel1936resistance}. Cassie took a different approach and considered an heterogeneous interface, where air would be trapped between the liquid and the surface, in the pockets formed by the surface roughness. So having an interface with a fraction $f_1$ at one contact angle $\theta_1$ and another at $f_2$ and $\theta_2$, the contact angle would be given by Cassie's Equation \cite{cassie1944wettability} :
+\begin{equation}\label{eq:cassie}
+cos \theta = f_1 cos \theta_1 + f_2 cos \theta_2
+\end{equation}
+\par The difference between both approaches can be seen in Figure \ref{fig:wenzelcassie}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\linewidth]{Figures/2.Chapter/wenzelcassie.png}
+\caption{Contact Angle approaches: (a) Wenzel, (b) Cassie-Baxter}
+\source{Adapted from Bhushan, 2011\cite{bhushan2011natural}}
+\label{fig:wenzelcassie}
+\end{figure}
+
+
+\section{Droplet Impact}
+
+\par During droplet impacts it's possible to categorize the outcome in several categories :
+
+\begin{itemize}
+\item Rebound: after the impact the droplet leaves the surface partially or fully. Partial rebound happens when the surface is hydrophobic, and full rebound when it's super-hydrophobic.
+\item Stick and Spread: the droplet sticks to the surface after the impact, spreading to its sides. This is characteristic of hydrophilic surfaces.
+\item Splashing: the droplet sticks to the surface but smaller droplets are released in the spreading phase. This is influenced mainly by the impact speed and surface roughness.
+\end{itemize}
+
+\par When the droplet collides independently of the out come it deforms and spreads. The speed of the \textit{spreading} is dictated by the velocity of the contact edge ($u_{ce}$). This parameter relates with the droplet impact speed ($u_i$) and the contact angle ($\theta$) using Equation \ref{eq:droplet}.
+\begin{equation} \label{eq:droplet}
+u_{ce}=\frac{u_i}{tan \theta}
+\end{equation}
+
+\par During the impact another important parameter to analyze is the spreading factor $\beta$, described in Equation \ref{eq:beta}.
+\begin{equation}\label{eq:beta}
+\beta=D/d_0
+\end{equation}
+
+\par Finally it is possible to prove that the spreading factor grows with the impact velocity ($u_i$) and spreading time using Equation \ref{eq:rein}, taken from \cite{rein1993phenomena}:
+
+\begin{equation}\label{eq:rein}
+\beta(\tau)=1-exp(-c\tau) \text{, \quad where} \quad \tau=\frac{t u_i}{R}
+\end{equation}
+
+where c is a non-dimensional parameter that depends on the surface tension and R is the droplet radius at that time. This equation is only valid until it reaches the maximum spreading factor.
+
+\par During the \textit{spreading}, when the diameter reaches its maximum value, the droplet assumes a shape similar to a disk. It is after that the \textit{recoiling} phase comes, decreasing the diameter. In this phase, wettability is very important, because it decides whether the droplet will stabilize or leave the surface. While the time-frame for the \textit{spreading} phase is short, the time-frame for the \textit{recoiling} is longer as the interactions between the droplet and the surface. In the final phase, for the hydrophilic surfaces, the droplet reaches an equilibrium diameter. The mentioned phenomena can be seen in Figure \ref{fig:droplet} and Figure \ref{fig:droplethf}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\linewidth]{Figures/2.Chapter/droplet.png}
+\caption{Droplet impact stages, for an hydrophilic surface}
+\label{fig:droplet}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\linewidth]{Figures/2.Chapter/droplethf.png}
+\caption{Droplet impact stages, for an hydrophobic surface}
+\label{fig:droplethf}
+\end{figure}
+
+\par At higher speeds \textit{fingering} may happen. This happens due to instabilities at high Reynolds number that cause the spread droplet to loose its symmetry and form waves at the edge that are called \textit{fingers}. This phenomena can be seen in Figure \ref{fig:fingering}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.35\linewidth]{Figures/2.Chapter/fingering.png}
+\caption{Fingering}
+\label{fig:fingering}
+\end{figure}
+
+\section{Heat Transfer}
+\label{sec:heat}
+
+\par During a droplet impact, the most important heat flux to evaluate is the change of heat between the droplet and the heater. According to \cite{sielaff2014experimental}, the heat flux from the droplet can be written as:
+
+\begin{equation}
+q''=q_0''+k_h \delta (\frac{{\partial}^2 T}{\partial x^2}+\frac{{\partial}^2 T}{\partial y^2})-\rho_h c_{p,h} \delta \frac{{\partial} T}{\partial t} \quad [W/m^2]
+\end{equation}
+
+were $q_0$ is the heat flux from the heater, $k_h$, $\rho_h$ and $c_{p,h}$ are the conductivity, density and specific heat capacity of the heater's material and $\delta$ is the thickness of the heater. Across the radius of the droplet, the heat flux can assume shape shown in Figure \ref{fig:fluxo}. High heat transfer is detected in the first moments before impact, and there is a peak near the edge of the droplet. This is the cause of "new" cold liquid reaching the hot surface. The heat flux is reduced substantially as time passes, mainly because the droplet is heating and the liquid speed is dropping, thus reducing convective and conductive heat transfer.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\linewidth]{Figures/2.Chapter/fluxo.png}
+\caption {Heat Flux at the surface for different timesteps}
+\label{fig:fluxo}
+\source{M. Pasandideh-Fard, 2001 \cite{pasandideh2001cooling}}
+\end{figure}
+
+\par The power dissipated ($P_{diss}$) by the droplet is the integral of this expression in the droplet area, and it's given by:
+
+\begin{equation}\label{eq:diss}
+P_{diss}= \int_{A} q'' \; dA \quad [W]
+\end{equation}
+
+\par Because the droplet, ideally, is always axisymetric, it is necessary to decompose $dA$ in cylindrical coordinates. Equation \ref{eq:diss} is expressed in cylindrical coordinates in Equation \ref{eq:cyl}. Integrating the power in time we end up with the total heat extracted. This is expressed in Equation \ref{eq:qtot}.
+
+\begin{equation} \label{eq:cyl}
+P_{diss} = \int_\theta \int_r r \, q'' \; dr d\theta \quad [W]
+\end{equation}
+\begin{equation} \label{eq:qtot}
+Q_{tot} = \int_t P_{diss} \; dt [J]
+\end{equation}
+
+\par In the work of Pasandideh-Fard \cite{pasandideh2001cooling} is proposed a way to quantify the "cooling effectiveness" ($\epsilon$) of the droplet. This effectiveness is described by the actual heat removed by the droplet divided by the maximum heat transfer possible by theory (assuming no phase change). This coefficient is described by Equation \ref{eq:epsilon}.\\
+
+\begin{equation}\label{eq:epsilon}
+\epsilon= \frac{\int_t \int_A q'' \; dA \, dt}{(m c_p \Delta T)_{water}}
+\end{equation}
+
+\par The relation between the cooling effectiveness and the time adimensionalized for different impact velocities has already been computed in the past \cite{pasandideh2001cooling} and is shown in Figure \ref{fig:cooling}. The cooling effectiveness grows with the impact velocity because, as shown in Equation \ref{eq:rein}, the spreading factor is larger, meaning that the area covered by the droplet also grows.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\linewidth]{Figures/2.Chapter/cooling.png}
+\caption {Evolution of the calculated cooling effectiveness during the impact of a droplet on a surface initially at 120ºC}
+\label{fig:cooling}
+\source{M. Pasandideh-Fard, 2001 \cite{pasandideh2001cooling}}
+\end{figure}
+
+\par During droplet impact there are many phases that have special heat transfer characteristics. It is described in various sources (e.g. \cite{strotos2011non}) the variation of temperature in the droplet. The Figure \ref{fig:tempvar} illustrates approximately how the temperature of the surface evolves along the radius during spreading. In the center of the droplet the bubble trapping effect creates a barrier for heat transfer, this causes the temperature to have a slightly higher value. Also in the minimum thickness area, also called neck, in the literature, the temperature is higher because the layer of liquid is thinner, removing less heat. In the contact edge, liquid that accumulates there. This liquid comes from the center of the droplet and is colder then the liquid already there, so the temperature decreases again in the edge. The temperature then returns to the heater's temperature, a small distance after the contact edge due to heat conduction in the heater.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\linewidth]{Figures/2.Chapter/tempvar.png}
+\caption {Scheme of the surface temperature variation along the droplet radius, during spreading}
+\label{fig:tempvar}
+\end{figure}
+
+

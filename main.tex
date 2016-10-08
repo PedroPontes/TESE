@@ -6,9 +6,11 @@
 \input{00.Definitions/packages.tex}
 %% Page formatting
 \input{00.Definitions/pagesetup.tex}
+\pgfplotsset{compat=1.12}
+%-----------------------------------------------------------
+%-----------------------------------------------------------
 
-%-----------------------------------------------------------
-%-----------------------------------------------------------
+
 \begin{document}
 %% Use Main document Language
 \selectlanguage{english}
@@ -39,18 +41,24 @@
 \pagestyle{documentsimple}%Simple head
 \input{1.Introduction/main.tex}
 \input{2.Chapter/main.tex}
+\input{3.Chapter/main.tex}
+\input{4.Chapter/main.tex}
+\input{5.Chapter/main.tex}
 \input{99.Conclusions/conclusions.tex}
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{Bibliography}
-\bibliographystyle{IEEEtran}
+\bibliographystyle{acm}
 \bibliography{02.biblio}
 \cleardoublepage
 
 \begin{appendices}
 	\begin{appendix}
 		\pagenumbering{bychapter}
-		\input{Appendices/appendixA.tex}   
+		\input{Appendices/appendixA.tex}
+        \input{Appendices/appendixB.tex}
+        \input{Appendices/appendixC.tex}
+        \input{Appendices/appendixD.tex}
 		\cleardoublepage
 	\end{appendix}
 \end{appendices}
